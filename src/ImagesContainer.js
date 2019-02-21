@@ -1,31 +1,14 @@
 import React from "react";
-import { DragSource } from "react-dnd";
-const itemSource = {
-  beginDrag(props) {
-    return { img: props.imgsrc };
-  },
-  endDrag(props, monitor, component) {
-    return props.handleProp(props.item.id);
-  }
-};
-function collect(connect, monitor) {
-  console.log("monitor.isDragging()", monitor.isDragging());
-  return {
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
-  };
-}
-const ImagesItems = props => {
-  const { isDragging, connectDragSource, item, imgsrc } = props;
+import ImgDragSrc from "./imgDragSrc";
 
-  const opacity = isDragging ? 0 : 1;
-  const borderRadius = isDragging ? "hidden" : "dashed";
-  return connectDragSource(
+const ImagesItems = props => {
+  const { imgsrc } = props;
+
+  return (
     <div style={{ borderStyle: "dashed", borderColor: "#948888" }}>
-      <img src={imgsrc} style={{ opacity }} />
+      <ImgDragSrc imgsrc={imgsrc} />
     </div>
   );
 };
 
-export default DragSource("item", itemSource, collect)(ImagesItems);
+export default ImagesItems;

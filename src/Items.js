@@ -21,7 +21,7 @@ const Items = props => {
     <div>
       <Contianer>
         {imgArray.map((imgs, id) => {
-          return <ImagesItems key={`${imgs}${id}`} imgsrc={imgs} />;
+          return <ImagesItems key={`${imgs}${id}`} id={id} imgsrc={imgs} />;
         })}
       </Contianer>
     </div>
