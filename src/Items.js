@@ -26,8 +26,6 @@ class Items extends React.Component {
     // let getOldSrc = this.state.imgArray[oldIndex];
     const newSrc = this.state.imgArray[draggedItemIndex.imgId];
 
-    const arrLength = this.state.imgArray.length;
-    debugger;
     const newArray = this.state.imgArray.filter(
       (item, i) => this.state.imgArray[oldIndex] !== item
     );
