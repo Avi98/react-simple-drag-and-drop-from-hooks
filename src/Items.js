@@ -9,7 +9,9 @@ const Contianer = styled.div`
   border-style: solid;
   border-color: #000000;
 `;
-
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
 class Items extends React.Component {
   state = {
     imgArray: [
@@ -19,14 +21,19 @@ class Items extends React.Component {
     ]
   };
 
-  setDropState = imgObj => {
-    this.setState(state => {
-      const indexArrToReplace = state.imgArray.indexOf(imgObj.imgsrc);
-      const newImg = state.imgArray[this.props.itemId];
+  setDropState = (dropedObj, draggedItemIndex) => {
+    const oldIndex = this.state.imgArray.indexOf(dropedObj.imgsrc);
+    // let getOldSrc = this.state.imgArray[oldIndex];
+    const newSrc = this.state.imgArray[draggedItemIndex.imgId];
 
-      //new array
-      state.imgArray[indexArrToReplace] = newImg;
-      debugger;
+    const arrLength = this.state.imgArray.length;
+    debugger;
+    const newArray = this.state.imgArray.filter(
+      (item, i) => this.state.imgArray[oldIndex] !== item
+    );
+
+    this.setState({
+      imgArray: newArray
     });
   };
   render() {
