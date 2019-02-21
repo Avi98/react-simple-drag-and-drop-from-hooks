@@ -17,7 +17,7 @@ function collect(connect, monitor) {
 function ImgDrag({ imgsrc, connectDragSource, isDragging }) {
   const opacity = isDragging ? 0 : 1;
   return connectDragSource(
-    <img src={imgsrc} style={{ opacity }} alt="imgsrc" />
+    <img src={imgsrc} style={{ opacity }} alt={imgsrc ? "alt" : null} />
   );
 }
 

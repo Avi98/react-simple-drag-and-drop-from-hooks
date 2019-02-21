@@ -23,7 +23,14 @@ class ImagesItems extends React.Component {
     const { connectDropTarget, imgsrc } = this.props;
     // console.log("this.props.itemId", this.props.itemId);
     return connectDropTarget(
-      <div style={{ borderStyle: "dashed", borderColor: "#948888" }}>
+      <div
+        style={{
+          height: "150px",
+          width: "150px",
+          borderStyle: "dashed",
+          borderColor: "#948888"
+        }}
+      >
         <ImgDragSrc imgsrc={imgsrc} {...this.props} />
       </div>
     );

@@ -6,6 +6,7 @@ const Contianer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
   border-style: solid;
   border-color: #000000;
 `;
@@ -16,22 +17,24 @@ class Items extends React.Component {
   state = {
     imgArray: [
       "https://via.placeholder.com/150/92c952",
+      "",
       "https://via.placeholder.com/150/771796",
-      "https://via.placeholder.com/150/24f355"
+      "https://via.placeholder.com/150/24f355",
+      "https://via.placeholder.com/150/f66b97",
+      "https://via.placeholder.com/150/51aa97",
+      "https://via.placeholder.com/150/1ee8a4"
     ]
   };
 
   setDropState = (dropedObj, draggedItemIndex) => {
     const oldIndex = this.state.imgArray.indexOf(dropedObj.imgsrc);
-    // let getOldSrc = this.state.imgArray[oldIndex];
-    const newSrc = this.state.imgArray[draggedItemIndex.imgId];
-
+    const arrStateCopy = [...this.state.imgArray];
     const newArray = this.state.imgArray.filter(
       (item, i) => this.state.imgArray[oldIndex] !== item
     );
 
     this.setState({
-      imgArray: newArray
+      imgArray: [...newArray, (arrStateCopy[draggedItemIndex] = "")]
     });
   };
   render() {
