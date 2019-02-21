@@ -4,6 +4,7 @@ import ImgDragSrc from "./imgDragSrc";
 
 const spec = {
   drop(props) {
+    props.setDropState(props.imgsrc);
     console.log("droped", props);
     return {};
   }
@@ -14,14 +15,16 @@ function collect(connect, monitor) {
     connectDropTarget: connect.dropTarget()
   };
 }
-const ImagesItems = props => {
-  const { imgsrc, connectDropTarget } = props;
+class ImagesItems extends React.Component {
+  render() {
+    const { connectDropTarget, imgsrc } = this.props;
 
-  return connectDropTarget(
-    <div style={{ borderStyle: "dashed", borderColor: "#948888" }}>
-      <ImgDragSrc imgsrc={imgsrc} />
-    </div>
-  );
-};
+    return connectDropTarget(
+      <div style={{ borderStyle: "dashed", borderColor: "#948888" }}>
+        <ImgDragSrc imgsrc={imgsrc} {...this.props} />
+      </div>
+    );
+  }
+}
 
 export default DropTarget("item", spec, collect)(ImagesItems);

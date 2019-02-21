@@ -3,6 +3,8 @@ import { DragSource } from "react-dnd";
 
 const itemSource = {
   beginDrag(props) {
+    debugger;
+    props.setDragState(props.imgsrc);
     return { imgId: props.id };
   }
 };
