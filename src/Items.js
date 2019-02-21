@@ -44,25 +44,13 @@ class Items extends React.Component {
         <Contianer>
           {imgArray.map((imgs, id) => {
             return (
-              <>
-                {!this.state.dropedImg.droped ? (
-                  <ImagesItems
-                    key={`${imgs}${id}`}
-                    id={id}
-                    imgsrc={imgs}
-                    setDropState={this.setDropState}
-                    setDragState={this.setDragState}
-                  />
-                ) : (
-                  <ImagesItems
-                    key={`${imgs}${id}`}
-                    id={id}
-                    imgsrc={this.state.dragging.imgsrc}
-                    setDropState={this.setDropState}
-                    setDragState={this.setDragState}
-                  />
-                )}
-              </>
+              <ImagesItems
+                key={`${imgs}${id}`}
+                id={id}
+                imgsrc={imgs}
+                setDropState={this.setDropState}
+                setDragState={this.setDragState}
+              />
             );
           })}
         </Contianer>
