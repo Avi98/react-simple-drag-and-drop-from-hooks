@@ -28,12 +28,12 @@ class Items extends React.Component {
   setDropState = (dropedObj, draggedItemIndex) => {
     const oldIndex = this.state.imgArray.indexOf(dropedObj.imgsrc);
     const arrStateCopy = [...this.state.imgArray];
-    const newArray = this.state.imgArray.filter(
-      (item, i) => this.state.imgArray[oldIndex] !== item
-    );
+    const fas = arrStateCopy[draggedItemIndex.imgId];
 
+    arrStateCopy[oldIndex] = `${fas}`;
+    arrStateCopy[draggedItemIndex.imgId] = "";
     this.setState({
-      imgArray: [...newArray, (arrStateCopy[draggedItemIndex] = "")]
+      imgArray: arrStateCopy
     });
   };
   render() {
