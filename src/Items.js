@@ -17,7 +17,6 @@ class Items extends React.Component {
   state = {
     imgArray: [
       "https://via.placeholder.com/150/92c952",
-      "",
       "https://via.placeholder.com/150/771796",
       "https://via.placeholder.com/150/24f355",
       "https://via.placeholder.com/150/f66b97",
