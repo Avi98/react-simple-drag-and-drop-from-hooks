@@ -10,46 +10,36 @@ const Contianer = styled.div`
   border-color: #000000;
 `;
 
-const imgArray = [
-  "https://via.placeholder.com/150/92c952",
-  "https://via.placeholder.com/150/771796",
-  "https://via.placeholder.com/150/24f355"
-];
-
 class Items extends React.Component {
   state = {
-    dragging: { imgsrc: "", dragging: false },
-    dropedImg: {
-      imgsrc: "",
-      droped: false
-    }
+    imgArray: [
+      "https://via.placeholder.com/150/92c952",
+      "https://via.placeholder.com/150/771796",
+      "https://via.placeholder.com/150/24f355"
+    ]
   };
-  setDragState = imgsrc => {
-    this.setState(state => ({
-      dragging: { imgsrc, dragging: true },
-      droped: { ...state.droped, droped: false }
-    }));
-  };
-  setDropState = imgsrc => {
-    this.setState({
-      dropedImg: {
-        imgsrc,
-        droped: true
-      }
+
+  setDropState = imgObj => {
+    this.setState(state => {
+      const indexArrToReplace = state.imgArray.indexOf(imgObj.imgsrc);
+      const newImg = state.imgArray[this.props.itemId];
+
+      //new array
+      state.imgArray[indexArrToReplace] = newImg;
+      debugger;
     });
   };
   render() {
     return (
       <div>
         <Contianer>
-          {imgArray.map((imgs, id) => {
+          {this.state.imgArray.map((imgs, id) => {
             return (
               <ImagesItems
                 key={`${imgs}${id}`}
                 id={id}
                 imgsrc={imgs}
                 setDropState={this.setDropState}
-                setDragState={this.setDragState}
               />
             );
           })}
