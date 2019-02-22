@@ -26,12 +26,15 @@ class Items extends React.Component {
   };
 
   setDropState = (dropedObj, draggedItemIndex) => {
-    const oldIndex = this.state.imgArray.indexOf(dropedObj.imgsrc);
+    // bug when drop on same pos new is being
+    debugger;
+    const oldIndex = dropedObj.id;
     const arrStateCopy = [...this.state.imgArray];
     const fas = arrStateCopy[draggedItemIndex.imgId];
-
-    arrStateCopy[oldIndex] = `${fas}`;
-    arrStateCopy[draggedItemIndex.imgId] = "";
+    if (draggedItemIndex.imgId !== oldIndex) {
+      arrStateCopy[draggedItemIndex.imgId] = "";
+    }
+    arrStateCopy[oldIndex] = fas;
     this.setState({
       imgArray: arrStateCopy
     });
